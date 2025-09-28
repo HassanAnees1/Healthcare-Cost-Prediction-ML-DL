@@ -1,0 +1,26 @@
+name: Healthcare Cost Prediction - CI/CD Pipeline
+
+# 🚀 Comprehensive CI/CD Pipeline for Healthcare Insurance Cost Prediction System
+# Automated testing, quality checks, model validation, and deployment
+
+on:
+  push:
+      branches: [ main, develop ]
+        pull_request:
+            branches: [ main ]
+              schedule:
+                  # Run weekly model validation (Sundays at 2 AM UTC)
+                      - cron: '0 2 * * 0'
+
+                      env:
+                        PYTHON_VERSION: '3.9'
+                          POETRY_VERSION: '1.6.1'
+
+                          jobs:
+                            # 🔍 Code Quality and Linting
+                              code-quality:
+                                  runs-on: ubuntu-latest
+                                      name: 🔍 Code Quality & Security Checks
+
+                                              steps:
+                                                  - name: 📥 Checkout Repository
